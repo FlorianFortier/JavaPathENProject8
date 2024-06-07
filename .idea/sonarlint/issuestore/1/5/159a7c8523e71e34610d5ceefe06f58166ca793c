@@ -1,20 +1,24 @@
 
 ¨
-java:S1488?"gImmediately return this expression instead of assigning it to the temporary variable "visitedLocation".(¿½ÂÙúÿÿÿÿJ$2a3ee5e5-465d-401b-9cfc-6042bac6cc2e
-•	java:S115z"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ïšäJ$f3fa5cb5-5161-4aff-a00a-663832e26075
+java:S14889"gImmediately return this expression instead of assigning it to the temporary variable "visitedLocation".(¿½ÂÙúÿÿÿÿJ$9d1bb09a-31c6-4808-8b8e-3cec72bcdab7
+–	java:S115„"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ïšäJ$2e6fbf6b-f17a-4361-ad3f-4922a042b307
 †
-java:S1155?">Use isEmpty() to check whether the collection is empty or not.(¿½ÂÙúÿÿÿÿ8í†¼“ÿ1J$3370493b-36a6-4bef-b7ac-eeae7355ef90
+java:S11559">Use isEmpty() to check whether the collection is empty or not.(¿½ÂÙúÿÿÿÿ8í†¼“ÿ1J$eeeee7a1-22eb-4068-bf2b-fe0b5d519575
 Â
-java:S6204I"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ß’°øùÿÿÿÿ8í†¼“ÿ1J$87456621-bc5d-4ed9-8aa6-3103fe9786d6
+java:S6204C"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ß’°øùÿÿÿÿ8í†¼“ÿ1J$1617e43a-aff2-4214-a34e-e71a54f149e2
+½
+java:S6204a"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ª™¨¹8ù½ä™ÿ1J$a13cc268-9bd8-406d-8bb4-56a72d1661f8
 v
-java:S1161o":Add the "@Override" annotation above this method signature(“–ýþJ$69a11ee5-d02a-48db-884f-cf9f4da55d36
+java:S1161f":Add the "@Override" annotation above this method signature(“–ýþJ$a6c80c52-7b17-431b-b7d0-928f0fa4fe27
+—
+java:S6204}"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ª™¨¹8¿šì™ÿ1
 Š
-java:S3457ˆ"AFormat specifiers should be used instead of string concatenation.(É°™˜øÿÿÿÿ8ÇÉë˜ÿ1J$54d9effc-73a6-4092-abbb-15cd14da6dca
+java:S3457’"AFormat specifiers should be used instead of string concatenation.(É°™˜øÿÿÿÿ8ÇÉë˜ÿ1J$bcd84683-3c32-401b-9137-3b39926ba3c1
 p
-java:S1602Œ",Remove useless curly braces around statement(ßê™è8ÞÍì˜ÿ1J$2ca1d892-ff41-41d6-809c-89fab2dbb522
+java:S1602–",Remove useless curly braces around statement(ßê™è8ÞÍì˜ÿ1J$dd0dc687-8c1c-42e7-af45-9e2b26c0bc1a
 [
-java:S2119•"Save and re-use this "Random".(éÖÃìJ$a716f57d-1f07-4d72-9b54-b220678d2e28
+java:S2119Ÿ"Save and re-use this "Random".(éÖÃìJ$9bfc611e-66c4-43fc-9a2f-87207a0ad9f8
 [
-java:S2119›"Save and re-use this "Random".(éÖÃìJ$c28988b1-dff9-4589-b962-bbebc8872ecd
+java:S2119¥"Save and re-use this "Random".(éÖÃìJ$d02d39d5-f9c3-4b98-bf95-93b06aab5b5b
 `
-java:S2119Ÿ"Save and re-use this "Random".(—íø–þÿÿÿÿJ$c8bcf4a3-e2e3-4577-9a45-bab70851ce96
+java:S2119©"Save and re-use this "Random".(—íø–þÿÿÿÿJ$800c6436-838a-436f-af0c-ce528c2be6fb

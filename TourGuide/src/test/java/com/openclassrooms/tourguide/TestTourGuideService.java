@@ -92,7 +92,6 @@ class TestTourGuideService {
 		assertEquals(user.getUserId(), visitedLocation.userId);
 	}
 
-	@Disabled // Not yet implemented
 	@Test
 	void getNearbyAttractions() {
 		GpsUtil gpsUtil = new GpsUtil();

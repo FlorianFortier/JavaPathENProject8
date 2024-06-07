@@ -1,5 +1,6 @@
 package com.openclassrooms.tourguide.service;
 
+import com.openclassrooms.tourguide.dto.NearbyAttractionDTO;
 import com.openclassrooms.tourguide.helper.InternalTestHelper;
 import com.openclassrooms.tourguide.tracker.Tracker;
 import com.openclassrooms.tourguide.user.User;
@@ -7,14 +8,7 @@ import com.openclassrooms.tourguide.user.UserReward;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -96,14 +90,11 @@ public class TourGuideService {
 	}
 
 	public List<Attraction> getNearByAttractions(VisitedLocation visitedLocation) {
-		List<Attraction> nearbyAttractions = new ArrayList<>();
-		for (Attraction attraction : gpsUtil.getAttractions()) {
-			if (rewardsService.isWithinAttractionProximity(attraction, visitedLocation.location)) {
-				nearbyAttractions.add(attraction);
-			}
-		}
-
-		return nearbyAttractions;
+		List<Attraction> attractions = gpsUtil.getAttractions();
+		return attractions.stream()
+				.sorted(Comparator.comparingDouble(a -> rewardsService.getDistance(a, visitedLocation.location)))
+				.limit(5)
+				.collect(Collectors.toList());
 	}
 
 	private void addShutDownHook() {
@@ -113,7 +104,26 @@ public class TourGuideService {
 			}
 		});
 	}
-
+	public List<NearbyAttractionDTO> getFiveClosestAttractions(VisitedLocation visitedLocation) {
+		List<Attraction> attractions = gpsUtil.getAttractions();
+		return attractions.stream()
+				.map(attraction -> {
+					double distance = rewardsService.getDistance(visitedLocation.location, attraction);
+					int rewardPoints = rewardsService.getRewardPoints(attraction, getUser(visitedLocation.userId.toString()));
+					return new NearbyAttractionDTO(
+							attraction.attractionName,
+							attraction.latitude,
+							attraction.longitude,
+							visitedLocation.location.latitude,
+							visitedLocation.location.longitude,
+							distance,
+							rewardPoints
+					);
+				})
+				.sorted(Comparator.comparingDouble(NearbyAttractionDTO::getDistance))
+				.limit(5)
+				.collect(Collectors.toList());
+	}
 	/**********************************************************************************
 	 * 
 	 * Methods Below: For Internal Testing

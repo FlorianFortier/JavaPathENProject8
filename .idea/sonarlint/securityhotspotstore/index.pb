@@ -28,3 +28,7 @@ ITourGuide/src/main/java/com/openclassrooms/tourguide/user/UserReward.java,1\2\
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+Å
+QTourGuide/src/main/java/com/openclassrooms/tourguide/dto/NearbyAttractionDTO.java,9\e\9e2ffe4ccf790aa6739c77a8b94dd45876963f6a
+~
+NTourGuide/src/main/java/com/openclassrooms/tourguide/user/UserPreferences.java,c\d\cd46435ad02617da2df90e203c6c3ec6777a501d

@@ -25,3 +25,6 @@ s
 CTourGuide/src/main/java/com/openclassrooms/tourguide/user/User.java,4\9\497d24dc01681263a84e51e34cce43d5f1b66e9f
 y
 ITourGuide/src/main/java/com/openclassrooms/tourguide/user/UserReward.java,1\2\12813430ee78cdc62bcdb0761761a82c0cff9448
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302

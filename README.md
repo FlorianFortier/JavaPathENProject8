@@ -1,1 +1,1 @@
-![example workflow]({GITHUB_WORKSPACE})
+![example workflow](https://github.com/FlorianFortier/JavaPathENProject8)

@@ -15,8 +15,8 @@
     <profile>
       <id>nexus</id>
       <properties>
-        <altDeploymentRepository>nexus::default::http://nexus.tprc.ovh/repository/maven-releases/</altDeploymentRepository>
-        <altSnapshotDeploymentRepository>nexus::default::http://nexus.tprc.ovh/repository/maven-snapshots/</altSnapshotDeploymentRepository>
+        <altDeploymentRepository>nexus::default::https://nexus.tprc.ovh/repository/maven-releases/</altDeploymentRepository>
+        <altSnapshotDeploymentRepository>nexus::default::https://nexus.tprc.ovh/repository/maven-snapshots/</altSnapshotDeploymentRepository>
       </properties>
     </profile>
   </profiles>

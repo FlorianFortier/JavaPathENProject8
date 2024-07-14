@@ -31,7 +31,7 @@ jobs:
       run: mvn -B package -DskipTests --file TourGuide/pom.xml
 
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -DskipTests -s $GITHUB_WORKSPACE/TourGuide/settings.xml --file TourGuide/pom.xml
+      run: mvn deploy -DskipTests -s TourGuide/settings.xml --file TourGuide/pom.xml
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}

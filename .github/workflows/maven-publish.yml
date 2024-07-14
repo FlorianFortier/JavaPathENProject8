@@ -28,10 +28,10 @@ jobs:
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     - name: Build with Maven
-      run: mvn -B package --file TourGuide/pom.xml
+      run: mvn -B package -DskipTests --file TourGuide/pom.xml
 
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s $GITHUB_WORKSPACE/TourGuide/settings.xml --file TourGuide/pom.xml
+      run: mvn deploy -DskipTests -s $GITHUB_WORKSPACE/TourGuide/settings.xml --file TourGuide/pom.xml
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}

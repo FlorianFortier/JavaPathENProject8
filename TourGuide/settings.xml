@@ -1,0 +1,22 @@
+<settings>
+  <servers>
+    <server>
+      <id>nexus-releases</id>
+    </server>
+    <server>
+      <id>nexus-snapshots</id>
+    </server>
+  </servers>
+  <profiles>
+    <profile>
+      <id>nexus</id>
+      <properties>
+        <altDeploymentRepository>nexus::default::https://nexus.tprc.ovh/repository/maven-releases/</altDeploymentRepository>
+        <altSnapshotDeploymentRepository>nexus::default::https://nexus.tprc.ovh/repository/maven-snapshots/</altSnapshotDeploymentRepository>
+      </properties>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>nexus</activeProfile>
+  </activeProfiles>
+</settings>

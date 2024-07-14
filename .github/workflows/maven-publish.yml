@@ -35,3 +35,5 @@ jobs:
       run: mvn deploy -DskipTests -s ${{ github.workspace }}/TourGuide/settings.xml --file ${{ github.workspace }}/TourGuide/pom.xml
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
+        NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}

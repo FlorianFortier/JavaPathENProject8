@@ -39,4 +39,5 @@ jobs:
     - name: print username
       env: 
         NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
-      run: echo $NEXUS_USERNAME
+      run: |
+        echo "NEXUS_USERNAME: $NEXUS_USERNAME"

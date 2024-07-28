@@ -28,7 +28,7 @@ jobs:
         server-username: ${{ secrets.NEXUS_USERNAME }}
         server-password: ${{ secrets.NEXUS_PASSWORD }}
     - name: Build with Maven
-      run: mvn -B package -DskipTests --file TourGuide/pom.xml
+      run: mvn -B package --file TourGuide/pom.xml
 
     - name: Publish to GitHub Packages Apache Maven
       run: mvn deploy -s ${{ github.workspace }}/TourGuide/settings.xml --file ${{ github.workspace }}/TourGuide/pom.xml

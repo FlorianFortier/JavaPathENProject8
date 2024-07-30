@@ -32,3 +32,9 @@ ITourGuide/src/main/java/com/openclassrooms/tourguide/user/UserReward.java,1\2\
 QTourGuide/src/main/java/com/openclassrooms/tourguide/dto/NearbyAttractionDTO.java,9\e\9e2ffe4ccf790aa6739c77a8b94dd45876963f6a
 ~
 NTourGuide/src/main/java/com/openclassrooms/tourguide/user/UserPreferences.java,c\d\cd46435ad02617da2df90e203c6c3ec6777a501d
+F
+TourGuide/settings.xml,2\6\262bce033fb1c19ee98a68516f27c6cbc17b2edb
+6
+d.puml,8\2\8230407b4dbc92c4865039c88df410e22883f5df
+y
+ITourGuide/src/main/java/com/openclassrooms/tourguide/tracker/Tracker.java,f\3\f3a61eb77b8ed9cfa0b4d76ca5f11909d4fcf238

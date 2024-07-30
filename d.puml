@@ -1,0 +1,174 @@
+@startuml
+class com.openclassrooms.tourguide.user.User {
+- UUID userId
+- String userName
+- String phoneNumber
+- String emailAddress
+- Date latestLocationTimestamp
+- List<VisitedLocation> visitedLocations
+- List<UserReward> userRewards
+- UserPreferences userPreferences
+- List<Provider> tripDeals
++ UUID getUserId()
++ String getUserName()
++ void setPhoneNumber(String)
++ String getPhoneNumber()
++ void setEmailAddress(String)
++ String getEmailAddress()
++ void setLatestLocationTimestamp(Date)
++ Date getLatestLocationTimestamp()
++ void addToVisitedLocations(VisitedLocation)
++ List<VisitedLocation> getVisitedLocations()
++ void clearVisitedLocations()
++ void addUserReward(UserReward)
++ List<UserReward> getUserRewards()
++ UserPreferences getUserPreferences()
++ void setUserPreferences(UserPreferences)
++ VisitedLocation getLastVisitedLocation()
++ void setTripDeals(List<Provider>)
++ List<Provider> getTripDeals()
+}
+
+
+class com.openclassrooms.tourguide.TourGuideModule {
++ GpsUtil getGpsUtil()
++ RewardsService getRewardsService()
++ RewardCentral getRewardCentral()
+}
+
+class com.openclassrooms.tourguide.TourguideApplication {
++ {static} void main(String[])
+}
+
+class com.openclassrooms.tourguide.service.TourGuideService {
+- Logger logger
+- GpsUtil gpsUtil
+- RewardsService rewardsService
+- TripPricer tripPricer
++ Tracker tracker
+~ boolean testMode
+- ExecutorService executorService
+- {static} String tripPricerApiKey
+- Map<String,User> internalUserMap
++ List<UserReward> getUserRewards(User)
++ VisitedLocation getUserLocation(User)
++ User getUser(String)
++ List<User> getAllUsers()
++ void addUser(User)
++ List<Provider> getTripDeals(User)
++ VisitedLocation trackUserLocation(User)
++ void trackAllUserLocations(List<User>)
++ List<Attraction> getNearByAttractions(VisitedLocation)
+- void addShutDownHook()
++ List<NearbyAttractionDTO> getFiveClosestAttractions(VisitedLocation)
+- void initializeInternalUsers()
+- void generateUserLocationHistory(User)
+- double generateRandomLongitude()
+- double generateRandomLatitude()
+- Date getRandomTime()
+}
+
+
+class com.openclassrooms.tourguide.user.UserReward {
++ VisitedLocation visitedLocation
++ Attraction attraction
+- int rewardPoints
++ void setRewardPoints(int)
++ int getRewardPoints()
+}
+
+
+class com.openclassrooms.tourguide.tracker.Tracker {
+- Logger logger
+- {static} long trackingPollingInterval
+- ExecutorService executorService
+- TourGuideService tourGuideService
+- boolean stop
++ void stopTracking()
++ void run()
+}
+
+
+class com.openclassrooms.tourguide.dto.NearbyAttractionDTO {
+- String attractionName
+- double attractionLatitude
+- double attractionLongitude
+- double userLatitude
+- double userLongitude
+- double distance
+- int rewardPoints
++ String getAttractionName()
++ void setAttractionName(String)
++ double getAttractionLatitude()
++ void setAttractionLatitude(double)
++ double getAttractionLongitude()
++ void setAttractionLongitude(double)
++ double getUserLatitude()
++ void setUserLatitude(double)
++ double getUserLongitude()
++ void setUserLongitude(double)
++ double getDistance()
++ void setDistance(double)
++ int getRewardPoints()
++ void setRewardPoints(int)
+}
+
+
+class com.openclassrooms.tourguide.helper.InternalTestHelper {
+- {static} int internalUserNumber
++ {static} void setInternalUserNumber(int)
++ {static} int getInternalUserNumber()
+}
+
+
+class com.openclassrooms.tourguide.user.UserPreferences {
+- int attractionProximity
+- int tripDuration
+- int ticketQuantity
+- int numberOfAdults
+- int numberOfChildren
++ void setAttractionProximity(int)
++ int getAttractionProximity()
++ int getTripDuration()
++ void setTripDuration(int)
++ int getTicketQuantity()
++ void setTicketQuantity(int)
++ int getNumberOfAdults()
++ void setNumberOfAdults(int)
++ int getNumberOfChildren()
++ void setNumberOfChildren(int)
+}
+
+
+class com.openclassrooms.tourguide.TourGuideController {
+~ TourGuideService tourGuideService
++ String index()
++ VisitedLocation getLocation(String)
++ List<NearbyAttractionDTO> getNearbyAttractions(String)
++ List<UserReward> getRewards(String)
++ List<Provider> getTripDeals(String)
+- User getUser(String)
+}
+
+
+class com.openclassrooms.tourguide.service.RewardsService {
+- {static} double STATUTE_MILES_PER_NAUTICAL_MILE
+- int defaultProximityBuffer
+- int proximityBuffer
+- int attractionProximityRange
+- GpsUtil gpsUtil
+- RewardCentral rewardsCentral
++ void setProximityBuffer(int)
++ void setDefaultProximityBuffer()
++ void calculateRewards(User)
++ boolean isWithinAttractionProximity(Attraction,Location)
+- boolean nearAttraction(VisitedLocation,Attraction)
+# int getRewardPoints(Attraction,User)
++ double getDistance(Location,Location)
+}
+
+
+
+
+com.openclassrooms.tourguide.tracker.Thread <|-- com.openclassrooms.tourguide.tracker.Tracker
+@enduml

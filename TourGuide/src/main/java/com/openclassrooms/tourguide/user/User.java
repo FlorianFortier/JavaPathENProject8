@@ -21,7 +21,7 @@ public class User {
 	private List<VisitedLocation> visitedLocations = new CopyOnWriteArrayList<>();
 	private List<UserReward> userRewards = new CopyOnWriteArrayList<>();
 	private UserPreferences userPreferences = new UserPreferences();
-	private List<Provider> tripDeals = new ArrayList<>();
+	private List<Provider> tripDeals = new CopyOnWriteArrayList<>();
 	public User(UUID userId, String userName, String phoneNumber, String emailAddress) {
 		this.userId = userId;
 		this.userName = userName;

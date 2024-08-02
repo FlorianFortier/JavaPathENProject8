@@ -1,26 +1,26 @@
 
-¨
-java:S1488="gImmediately return this expression instead of assigning it to the temporary variable "visitedLocation".(¿½ÂÙúÿÿÿÿJ$cb011690-97c9-466f-b712-c4da3fa36443
-–	java:S115˜"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ïšäJ$7e0c3a6f-3008-4101-a4a5-c2919a15debc
+¯
+java:S1488;"gImmediately return this expression instead of assigning it to the temporary variable "visitedLocation".(¿½ÂÙúÿÿÿÿ8Ì‡ïÊ2J$015f7fd9-4114-4fd1-aabb-4747d6803d5b
+	java:S115–"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ïšä8Î‡ïÊ2J$1e86574b-1365-493d-9d46-dff034593a6a
 †
-java:S1155=">Use isEmpty() to check whether the collection is empty or not.(¿½ÂÙúÿÿÿÿ8í†¼“ÿ1J$981c9a35-61f2-403a-b037-0360cda3705f
-Â
-java:S6204G"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ß’°øùÿÿÿÿ8í†¼“ÿ1J$dacc4fdf-a92c-4793-a84b-1f81e9147b03
-¡
-java:S2142j"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8ŸÄ´šÿ1J$dde3f398-4b40-4ae3-b423-28a0538ccabf
+java:S1155;">Use isEmpty() to check whether the collection is empty or not.(¿½ÂÙúÿÿÿÿ8Ò‡ïÊ2J$55ca9562-400c-4263-a084-0dca99cc688a
 ½
-java:S6204u"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ª™¨¹8ù½ä™ÿ1J$e920f71a-b38a-4725-baa6-a3b5f818cc1f
-v
-java:S1161z":Add the "@Override" annotation above this method signature(“–ışJ$0243da67-1e61-4f8d-9c64-d46eec2e02ba
+java:S6204E"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(¢ØÌ8×‡ïÊ2J$543d83ac-1a75-456b-b52f-f94a70b630fe
+¡
+java:S2142h"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8×‡ïÊ2J$e2752e30-eebf-428f-a69e-b4bb9616707e
+½
+java:S6204s"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ª™¨¹8Ù‡ïÊ2J$99254693-8d48-4035-bf6e-0648aea2ae64
+}
+java:S1161x":Add the "@Override" annotation above this method signature(“–ış8Ù‡ïÊ2J$bd459fe5-778c-4eba-8c71-bbd3722e3fbc
 ¾
-java:S6204‘"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ª™¨¹8¿šì™ÿ1J$9c21f43a-80c7-4bd0-ac3b-750f4d6b40e5
+java:S6204"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ª™¨¹8·ÒóÊ2J$668210e9-4ea9-491c-a1b7-3a73449f5798
 Š
-java:S3457¦"AFormat specifiers should be used instead of string concatenation.(É°™˜øÿÿÿÿ8ÇÉë˜ÿ1J$1a4a6e3f-fa89-4c4e-a32b-6c6bdc0b1e51
+java:S3457¤"AFormat specifiers should be used instead of string concatenation.(É°™˜øÿÿÿÿ8Û‡ïÊ2J$bd8a1d03-6426-4939-a06e-c2d6a9b6b2a2
 p
-java:S1602ª",Remove useless curly braces around statement(ßê™è8ŞÍì˜ÿ1J$6773fbaa-2b9b-434d-b878-3b468971bd8d
-[
-java:S2119³"Save and re-use this "Random".(éÖÃìJ$ffc69729-a4fe-45ba-9555-c86297c32b52
-[
-java:S2119¹"Save and re-use this "Random".(éÖÃìJ$114bcf01-6dd7-4ad7-9b73-a5ac1a8ac3cf
-`
-java:S2119½"Save and re-use this "Random".(—íø–şÿÿÿÿJ$0aab928b-dbe9-4763-b14a-022b0ecd7daf
+java:S1602¨",Remove useless curly braces around statement(ßê™è8Û‡ïÊ2J$c820b0ef-ee2d-4ef4-864a-2481f6e349fa
+b
+java:S2119±"Save and re-use this "Random".(éÖÃì8İ‡ïÊ2J$32acbe9d-66af-48e4-bbfe-ef2614757d70
+b
+java:S2119·"Save and re-use this "Random".(éÖÃì8İ‡ïÊ2J$81679441-cfc5-4175-97f0-df2f463560f5
+g
+java:S2119»"Save and re-use this "Random".(—íø–şÿÿÿÿ8İ‡ïÊ2J$ddb27d9b-25ee-4581-acd5-91f386a87e4d

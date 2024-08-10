@@ -1,8 +1,13 @@
 package com.openclassrooms.tourguide.service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import gpsUtil.GpsUtil;
 import org.springframework.stereotype.Service;
@@ -24,7 +29,8 @@ public class RewardsService {
 	private int attractionProximityRange = 200;
 	private final GpsUtil gpsUtil;
 	private final RewardCentral rewardsCentral;
-	
+	private final ExecutorService executorService = Executors.newFixedThreadPool(100); // Adjust pool size as needed
+
 	public RewardsService(GpsUtil gpsUtil, RewardCentral rewardCentral) {
 		this.gpsUtil = gpsUtil;
 		this.rewardsCentral = rewardCentral;
@@ -41,15 +47,35 @@ public class RewardsService {
 	public void calculateRewards(User user) {
 		List<VisitedLocation> userLocations = user.getVisitedLocations();
 		List<Attraction> attractions = gpsUtil.getAttractions();
-		Set<String> addedAttractions = new HashSet<>(); // To keep track of already added attractions
+		Set<String> addedAttractions = new HashSet<>();
+
+		List<Future<Void>> futures = new ArrayList<>();
 
 		for (VisitedLocation visitedLocation : userLocations) {
 			for (Attraction attraction : attractions) {
-				if (!addedAttractions.contains(attraction.attractionName) && nearAttraction(visitedLocation, attraction)) {
-						user.addUserReward(new UserReward(visitedLocation, attraction, getRewardPoints(attraction, user)));
-						addedAttractions.add(attraction.attractionName); // Mark attraction as added
-					}
+				if (!addedAttractions.contains(attraction.attractionName)) {
+					Callable<Void> task = () -> {
+						if (nearAttraction(visitedLocation, attraction)) {
+							synchronized (user) {
+								if (!addedAttractions.contains(attraction.attractionName)) { // Double check after acquiring lock
+									user.addUserReward(new UserReward(visitedLocation, attraction, getRewardPoints(attraction, user)));
+									addedAttractions.add(attraction.attractionName); // Mark attraction as added
+								}
+							}
+						}
+						return null;
+					};
+					futures.add(executorService.submit(task));
+				}
+			}
+		}
 
+		// Wait for all tasks to complete
+		for (Future<Void> future : futures) {
+			try {
+				future.get(); // Wait for each task to complete
+			} catch (Exception e) {
+				e.printStackTrace(); // Handle exceptions appropriately
 			}
 		}
 	}

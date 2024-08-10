@@ -66,8 +66,24 @@ public class TourGuideService {
 	}
 
 	public List<User> getAllUsers() {
-		return internalUserMap.values().parallelStream().collect(Collectors.toList());
+		List<Future<User>> futures = new ArrayList<>();
+		List<User> users = Collections.synchronizedList(new ArrayList<>());
+
+		for (String userName : internalUserMap.keySet()) {
+			futures.add(executorService.submit(() -> internalUserMap.get(userName)));
+		}
+
+		for (Future<User> future : futures) {
+			try {
+				users.add(future.get());
+			} catch (InterruptedException | ExecutionException e) {
+				logger.error("Error fetching user data", e);
+			}
+		}
+
+		return users;
 	}
+
 
 	public void addUser(User user) {
 		if (!internalUserMap.containsKey(user.getUserName())) {

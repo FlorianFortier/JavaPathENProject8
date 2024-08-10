@@ -1,5 +1,11 @@
 
 ¬
-java:S1488P"dImmediately return this expression instead of assigning it to the temporary variable "statuteMiles".(‰ƒ´ºùÿÿÿÿ8ªü¨šÿ1J$53658f36-863f-4ff9-b498-a9ea49a5c50b
+java:S1488j"dImmediately return this expression instead of assigning it to the temporary variable "statuteMiles".(‰ƒ´ºùÿÿÿÿ8àÕ Ù“2J$0a5d3d2c-91e4-456f-958d-81f68cd10831
+š
+java:S3776/"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(ò¢Ôüøÿÿÿÿ8ù£´Ù“2J$10177742-84eb-4e88-9624-b1804fa795c1
+f
+java:S2445;"I"user" is a method parameter, and should not be used for synchronization.(ïËë¹8õá´Ù“2
+¡
+java:S2142M"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8šÊ´Ù“2J$7e595a8f-8c3f-4911-b756-e91d97a20762
 k
-java:S1125:"(Remove the unnecessary boolean literals.(÷‹ó—8£ˆÂÊ2J$5d77463b-68eb-4995-858f-9ceda563d939
+java:S1125T"(Remove the unnecessary boolean literals.(÷‹ó—8åÕ Ù“2J$9a558b60-9198-4321-99aa-0b10d0523c27

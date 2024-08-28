@@ -1,11 +1,14 @@
 
-¬
-java:S1488j"dImmediately return this expression instead of assigning it to the temporary variable "statuteMiles".(‰ƒ´ºùÿÿÿÿ8àÕ Ù“2J$0a5d3d2c-91e4-456f-958d-81f68cd10831
-š
-java:S3776/"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(ò¢Ôüøÿÿÿÿ8ù£´Ù“2J$10177742-84eb-4e88-9624-b1804fa795c1
-f
-java:S2445;"I"user" is a method parameter, and should not be used for synchronization.(ïËë¹8õá´Ù“2
 ¡
-java:S2142M"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8šÊ´Ù“2J$7e595a8f-8c3f-4911-b756-e91d97a20762
+java:S22934"YReplace the type specification in this constructor call with the diamond operator ("<>").(÷şíÜüÿÿÿÿ8Óï¾Å™2J$8da3abde-0c0e-4fb7-b2ab-30cbbf2241c7
+¬
+java:S1488r"dImmediately return this expression instead of assigning it to the temporary variable "statuteMiles".(‰ƒ´ºùÿÿÿÿ8Óï¾Å™2J$fb160ac2-af7f-4f4e-ae28-60f028bdb830
+˜
+java:S20950"PUse try-with-resources or close this "ThreadPoolExecutor" in a "finally" clause.(Á¹ÇŞşÿÿÿÿ8Ôï¾Å™2J$5937abb7-ee26-4d1a-8a42-574e0bdc95ce
+½
+java:S6204>"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ª™¨¹8İï¾Å™2J$115685f7-3906-4325-89e7-2e6c192f057c
+r	java:S106Q"+Replace this use of System.err by a logger.(Çƒ íÿÿÿÿÿ8ßï¾Å™2J$63a24c25-a7de-4a90-92b8-5808b420805a
 k
-java:S1125T"(Remove the unnecessary boolean literals.(÷‹ó—8åÕ Ù“2J$9a558b60-9198-4321-99aa-0b10d0523c27
+java:S1125\"(Remove the unnecessary boolean literals.(÷‹ó—8ßï¾Å™2J$4b43a627-cdd8-4ddb-a456-8e98ce7970cf
+s
+java:S1128"1Remove this unused import 'java.util.concurrent'.(íĞ¢68àï¾Å™2J$5f88af7c-df04-4293-ae04-a5ce7dda38d9

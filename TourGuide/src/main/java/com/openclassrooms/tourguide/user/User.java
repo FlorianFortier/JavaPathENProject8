@@ -18,8 +18,8 @@ public class User {
 	/* CopyOnWrite array list provide a solution for fail-safe iterator while working with multi-treadhead process
 	* Preventing concurrentModification exception from happening
 	*/
-	private List<VisitedLocation> visitedLocations = new CopyOnWriteArrayList<>();
-	private List<UserReward> userRewards = new CopyOnWriteArrayList<>();
+	private CopyOnWriteArrayList<VisitedLocation> visitedLocations = new CopyOnWriteArrayList<>();
+	private CopyOnWriteArrayList<UserReward> userRewards = new CopyOnWriteArrayList<>();
 	private UserPreferences userPreferences = new UserPreferences();
 	private List<Provider> tripDeals = new CopyOnWriteArrayList<>();
 	public User(UUID userId, String userName, String phoneNumber, String emailAddress) {

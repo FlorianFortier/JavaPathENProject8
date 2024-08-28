@@ -80,10 +80,8 @@ public class TourGuideService {
 				logger.error("Error fetching user data", e);
 			}
 		}
-
 		return users;
 	}
-
 
 	public void addUser(User user) {
 		if (!internalUserMap.containsKey(user.getUserName())) {

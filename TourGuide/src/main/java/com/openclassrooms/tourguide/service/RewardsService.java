@@ -1,13 +1,8 @@
 package com.openclassrooms.tourguide.service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.stream.Collectors;
 
 import gpsUtil.GpsUtil;
 import org.springframework.stereotype.Service;
@@ -18,6 +13,7 @@ import gpsUtil.location.VisitedLocation;
 import rewardCentral.RewardCentral;
 import com.openclassrooms.tourguide.user.User;
 import com.openclassrooms.tourguide.user.UserReward;
+import java.util.concurrent.*;
 
 @Service
 public class RewardsService {
@@ -29,7 +25,6 @@ public class RewardsService {
 	private int attractionProximityRange = 200;
 	private final GpsUtil gpsUtil;
 	private final RewardCentral rewardsCentral;
-	private final ExecutorService executorService = Executors.newFixedThreadPool(100); // Adjust pool size as needed
 
 	public RewardsService(GpsUtil gpsUtil, RewardCentral rewardCentral) {
 		this.gpsUtil = gpsUtil;
@@ -47,38 +42,51 @@ public class RewardsService {
 	public void calculateRewards(User user) {
 		List<VisitedLocation> userLocations = user.getVisitedLocations();
 		List<Attraction> attractions = gpsUtil.getAttractions();
-		Set<String> addedAttractions = new HashSet<>();
+		Set<String> addedAttractions = ConcurrentHashMap.newKeySet(); // Thread-safe set
 
-		List<Future<Void>> futures = new ArrayList<>();
+		// Create a custom thread pool for handling the reward calculations
+		ExecutorService rewardExecutor = new ThreadPoolExecutor(
+				Runtime.getRuntime().availableProcessors(),
+				Runtime.getRuntime().availableProcessors(),
+				0L, TimeUnit.MILLISECONDS,
+				new LinkedBlockingQueue<Runnable>()
+		);
+
+		List<CompletableFuture<Void>> futures = new ArrayList<>();
 
 		for (VisitedLocation visitedLocation : userLocations) {
-			for (Attraction attraction : attractions) {
-				if (!addedAttractions.contains(attraction.attractionName)) {
-					Callable<Void> task = () -> {
-						if (nearAttraction(visitedLocation, attraction)) {
-							synchronized (user) {
-								if (!addedAttractions.contains(attraction.attractionName)) { // Double check after acquiring lock
-									user.addUserReward(new UserReward(visitedLocation, attraction, getRewardPoints(attraction, user)));
-									addedAttractions.add(attraction.attractionName); // Mark attraction as added
-								}
-							}
-						}
-						return null;
-					};
-					futures.add(executorService.submit(task));
+			// Pre-filter relevant attractions based on proximity
+			List<Attraction> relevantAttractions = attractions.stream()
+					.filter(attraction -> !addedAttractions.contains(attraction.attractionName)
+							&& nearAttraction(visitedLocation, attraction))
+					.collect(Collectors.toList());
+
+			// Process relevant attractions
+			CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+				for (Attraction attraction : relevantAttractions) {
+					if (addedAttractions.add(attraction.attractionName)) { // Thread-safe add
+						user.addUserReward(new UserReward(visitedLocation, attraction, getRewardPoints(attraction, user)));
+					}
 				}
-			}
+			}, rewardExecutor);
+
+			futures.add(future);
 		}
 
-		// Wait for all tasks to complete
-		for (Future<Void> future : futures) {
-			try {
-				future.get(); // Wait for each task to complete
-			} catch (Exception e) {
-				e.printStackTrace(); // Handle exceptions appropriately
+		try {
+			CompletableFuture.allOf(futures.toArray(new CompletableFuture[0])).join();
+		} catch (Exception e) {
+			if (e.getCause() instanceof InterruptedException) {
+				Thread.currentThread().interrupt(); // Preserve the interrupt status
+				System.err.println("Task interrupted: " + e.getMessage());
+			} else {
+				e.printStackTrace();
 			}
+		} finally {
+			rewardExecutor.shutdown();
 		}
 	}
+
 
 	public boolean isWithinAttractionProximity(Attraction attraction, Location location) {
 		return getDistance(attraction, location) > attractionProximityRange ? false : true;
